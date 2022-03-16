@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 19:18:35 by vly               #+#    #+#             */
-/*   Updated: 2022/03/16 19:22:59 by vly              ###   ########.fr       */
+/*   Created: 2022/03/16 19:08:43 by vly               #+#    #+#             */
+/*   Updated: 2022/03/16 19:19:46 by vly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_atoi(const char *str)
 {
+	int	result;
+	int	sign;
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	result = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 	{
 		i++;
 	}
-	while (i >= 0)
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
-		i--;
+		if (str[i] == '-')
+		{
+			sign *= -1;
+		}
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + str[i] - '0';
+		i++;
+	}
+	return (sign * result);
 }
