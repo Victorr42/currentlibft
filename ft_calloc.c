@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vly <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/26 16:28:12 by vly               #+#    #+#             */
-/*   Updated: 2022/03/17 20:04:41 by vly              ###   ########.fr       */
+/*   Created: 2022/03/17 20:37:07 by vly               #+#    #+#             */
+/*   Updated: 2022/03/17 21:24:38 by vly              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-int	ft_isalpha(int i)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if ((i >= 65 && i <= 90) || (i >= 97 && i <= 122))
-	{
-		return (1);
-	}
-	return (0);
+	char	*array;
+
+	size = size * count;
+	if(!(array = malloc(size)))
+		return (NULL);
+	ft_bzero(array, size);
+	return (array);
 }
